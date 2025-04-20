@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Kocham Cię</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffeef0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    #startImage, #loveImage {
+      width: 250px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+    }
+
+    #loveImage, #finalText {
+      display: none;
+    }
+
+    #buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yes {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    #finalText {
+      font-size: 2rem;
+      margin-top: 20px;
+      color: #d81b60;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="startImage" src="data:image/png;base64,{{START_IMAGE}}" alt="start cat" />
+  <h1>Kocham Cię</h1>
+
+  <div id="buttons">
+    <button id="yes">Tak</button>
+    <button id="no">Nie</button>
+  </div>
+
+  <img id="loveImage" src="data:image/png;base64,{{LOVE_IMAGE}}" alt="love cat" />
+  <div id="finalText">Wiedziałem! 💕</div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const loveImage = document.getElementById('loveImage');
+    const startImage = document.getElementById('startImage');
+    const finalText = document.getElementById('finalText');
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      loveImage.style.display = 'block';
+      finalText.style.display = 'block';
+      startImage.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
